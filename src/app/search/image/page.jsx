@@ -3,7 +3,8 @@ import Link from 'next/link'
 import React from 'react'
 
 export default async function ImageSearchPage({searchParams}) {
-  const res = await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.term}&searchType=image`)
+  const page = searchParams.page || '1'
+  const res = await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.term}&searchType=image&start=${page}`)
   if (!res.ok) {
     throw new Error('Something went wrong')
   }

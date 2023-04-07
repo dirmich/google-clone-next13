@@ -5,20 +5,8 @@ import { useSearchParams } from 'next/navigation'
 import React from 'react'
 
 export default async function WebSearch({searchParams}) {
-  // const [items,setItems]=useState([])
-
-  // useCallback(async function fetch() {
-  //   try {
-  //     const res = await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.CONTEXT_KEY}&q=image`).then(r=>r.json())
-  //     setItems(res.items)
-  //   } catch(e) {
-  //     throw(e)
-  //   }
-  // })
-  // useEffect(()=>{
-  //   fetch()
-  // },[])
-  const res = await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.term}`)
+  const page = searchParams.page || '1'
+  const res = await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.term}&start=${page}`)
   if (!res.ok) {
     throw new Error('Something went wrong')
   }

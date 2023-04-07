@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 import parser from 'html-react-parser'
 import Image from 'next/image'
+import PaginationButtons from './PaginationButtons'
 
 export default function ImageSearchResult({results}) {
   return (
@@ -12,8 +13,8 @@ export default function ImageSearchResult({results}) {
             {results.items?.map((item)=>(
                 <div key={item.link} className='mt-7 group'>
                     <div className='flex flex-col'>
-                    <Link className='text-sm truncate cursor-pointer' href={item.image.contextLink}>                       
-                            <img src={item.link} alt={item.title} className='h-60 group-hover:shadow-xl w-full object-contain transition-shadow'/>
+                    <Link className='text-sm truncate cursor-pointer group-hover:shadow-xl transition-shadow' href={item.image.contextLink}>                       
+                            <img src={item.link} alt={item.title} className='h-60 group-hover:shadow-sm transition-shadow w-full object-contain '/>
                     </Link>
                     <Link className='text-sm truncate cursor-pointer w-full' href={item.image.contextLink}>
                         <h2 className='group-hover:underline truncate text-xl '>{item.title}</h2>
@@ -25,6 +26,9 @@ export default function ImageSearchResult({results}) {
                     </div>
                 </div>
             ))}
+        </div>
+        <div>
+            <PaginationButtons/>
         </div>
     </div>
   )

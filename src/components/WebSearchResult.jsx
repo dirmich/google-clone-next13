@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import parser from 'html-react-parser'
+import PaginationButtons from './PaginationButtons'
 
 export default function WebSearchResult({results}) {
   return (
@@ -17,6 +18,9 @@ export default function WebSearchResult({results}) {
                 </div>
             ))}
         </p>
+        <div className='mt-4'>
+        <PaginationButtons/>
+        </div>
     </div>
   )
 }
