@@ -21,7 +21,7 @@ export default function HomeSearch() {
     setRandomLoading(true)
     try {
     const resp = await fetch('https://random-word-api.herokuapp.com/word').then((res)=>res.json()).then((data)=>data[0])   
-    router.push(`/search/web?searchTerm=${resp}`)
+    router.push(`/search/web?term=${resp}`)
     } catch(e) {
       console.log(e)
     } finally {
